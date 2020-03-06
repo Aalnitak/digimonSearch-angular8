@@ -1,0 +1,24 @@
+<mat-toolbar>
+    <img class="digimon-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Digimon_Logo.svg/322px-Digimon_Logo.svg.png" />
+
+    <div class="search-box">
+        <input matInput class="search-input" type="text" [(ngModel)]="search" (ngModelChange)="searchEvent(search)" placeholder="Enter Digimon name or id..." />
+        <button mat-button class="close-button" *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="searchEvent('')">
+      <mat-icon>close</mat-icon>
+    </button>
+    </div>
+
+    <div class="filter-component">
+        <mat-label class="filter">Filter by Level</mat-label>
+        <mat-form-field class="form-field">
+            <mat-select [(ngModel)]="currentLevel" (ngModelChange)="onLevelSelected()">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let lvl of levels" [value]="lvl">
+                    {{ lvl | titlecase }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    
+</mat-toolbar>
